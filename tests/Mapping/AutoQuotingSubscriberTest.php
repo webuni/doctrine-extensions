@@ -21,7 +21,6 @@ use Doctrine\ORM\Mapping\ClassMetadataInfo;
 use Doctrine\ORM\Tools\Setup;
 use PHPUnit\Framework\TestCase;
 use Webuni\DoctrineExtensions\Mapping\AutoQuotingSubscriber;
-use Webuni\DoctrineExtensions\Tests\Mapping\Entity\Group;
 use Webuni\DoctrineExtensions\Tests\Mapping\Entity\QuotedUser;
 use Webuni\DoctrineExtensions\Tests\Mapping\Entity\User;
 
