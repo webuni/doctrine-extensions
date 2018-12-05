@@ -18,6 +18,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Reference;
 use Webuni\DoctrineExtensions\Mapping\AutoQuotingSubscriber;
+use Webuni\DoctrineExtensions\Mapping\JsonTypeSubscriber;
 use Webuni\DoctrineExtensions\Mapping\PluralNamingStrategy;
 
 class WebuniDoctrineExtension extends Extension
@@ -25,6 +26,7 @@ class WebuniDoctrineExtension extends Extension
     public function load(array $configs, ContainerBuilder $container): void
     {
         $container->register(AutoQuotingSubscriber::class)->addTag('doctrine.event_subscriber');
+        $container->register(JsonTypeSubscriber::class)->addTag('doctrine.event_subscriber');
 
         $container
             ->register('doctrine.orm.naming_strategy.plural_default', PluralNamingStrategy::class)
