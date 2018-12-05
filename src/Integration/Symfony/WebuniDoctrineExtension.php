@@ -20,7 +20,7 @@ use Symfony\Component\DependencyInjection\Reference;
 use Webuni\DoctrineExtensions\Mapping\AutoQuotingSubscriber;
 use Webuni\DoctrineExtensions\Mapping\PluralNamingStrategy;
 
-class DependencyInjectionExtension extends Extension
+class WebuniDoctrineExtension extends Extension
 {
     public function load(array $configs, ContainerBuilder $container): void
     {

@@ -20,6 +20,6 @@ final class WebuniDoctrineBundle extends Bundle
 {
     protected function getContainerExtensionClass(): string
     {
-        return DependencyInjectionExtension::class;
+        return WebuniDoctrineExtension::class;
     }
 }
