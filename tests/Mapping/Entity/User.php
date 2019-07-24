@@ -46,4 +46,39 @@ class User
      * @ORM\ManyToMany(targetEntity="Group")
      */
     private $groups;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $defaultInteger = 1;
+
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $defaultFloat = 1.1;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $defaultString = 'def';
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $defaultBoolean = false;
+
+    /**
+     * @ORM\Column(type="array")
+     */
+    private $defaultArray = ['foo', 'bar'];
+
+    /**
+     * @ORM\Column(type="simple_array")
+     */
+    private $defaultSimpleArray = ['foo', 'bar'];
+
+    /**
+     * @ORM\Column(type="json")
+     */
+    private $defaultJson = ['foo' => [1], 'bar' => ['data']];
 }
