@@ -18,7 +18,11 @@ use Doctrine\Common\EventSubscriber;
 use Doctrine\DBAL\Schema\AbstractAsset;
 use Doctrine\ORM\Event\LoadClassMetadataEventArgs;
 use Doctrine\ORM\Events;
+use Doctrine\ORM\Mapping\DefaultQuoteStrategy;
 
+/**
+ * @see DefaultQuoteStrategy
+ */
 final class AutoQuotingSubscriber implements EventSubscriber
 {
     public function getSubscribedEvents(): array

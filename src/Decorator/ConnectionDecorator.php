@@ -5,6 +5,8 @@ namespace Webuni\DoctrineExtensions\Decorator;
 use Closure;
 use Doctrine\DBAL\Cache\QueryCacheProfile;
 use Doctrine\DBAL\Connection;
+use function func_get_args;
+use function call_user_func_array;
 
 class ConnectionDecorator extends Connection
 {
@@ -32,7 +34,7 @@ class ConnectionDecorator extends Connection
 
     public function query()
     {
-        return $this->wrapped->query();
+        return call_user_func_array([$this->wrapped, 'query'], func_get_args());
     }
 
     public function getParams()
