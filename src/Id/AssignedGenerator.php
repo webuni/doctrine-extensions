@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Translatable;
+namespace Webuni\DoctrineExtensions\Id;
 
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
