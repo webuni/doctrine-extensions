@@ -15,16 +15,19 @@ declare(strict_types=1);
 namespace Webuni\DoctrineExtensions\Mapping;
 
 use Doctrine\Common\Inflector\Inflector;
+use Doctrine\Inflector\InflectorFactory;
 use Doctrine\ORM\Mapping\NamingStrategy;
 
 final class PluralNamingStrategy implements NamingStrategy
 {
     private $cache = [];
     private $strategy;
+    private $inflector;
 
     public function __construct(NamingStrategy $strategy)
     {
         $this->strategy = $strategy;
+        $this->inflector = class_exists(InflectorFactory::class) ? InflectorFactory::create()->build() : new Inflector();
     }
 
     public function classToTableName($className): string
@@ -81,6 +84,6 @@ final class PluralNamingStrategy implements NamingStrategy
             $namespace = '';
         }
 
-        return $this->cache[$class] = ltrim($namespace.'\\'.Inflector::pluralize($name), '\\');
+        return $this->cache[$class] = ltrim($namespace.'\\'.$this->inflector->pluralize($name), '\\');
     }
 }

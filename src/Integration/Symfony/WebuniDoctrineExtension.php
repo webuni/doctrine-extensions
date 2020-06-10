@@ -15,6 +15,7 @@ declare(strict_types=1);
 namespace Webuni\DoctrineExtensions\Integration\Symfony;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Reference;
 use Webuni\DoctrineExtensions\Mapping\AutoQuotingSubscriber;
@@ -38,6 +39,11 @@ class WebuniDoctrineExtension extends Extension
         $container
             ->register('doctrine.orm.naming_strategy.plural_underscore', PluralNamingStrategy::class)
             ->setArgument(0, new Reference('doctrine.orm.naming_strategy.underscore'))
+        ;
+
+        $container
+            ->register('doctrine.orm.naming_strategy.plural_underscore_number_aware', PluralNamingStrategy::class)
+            ->setArgument(0, new Reference('doctrine.orm.naming_strategy.underscore_number_aware', ContainerInterface::NULL_ON_INVALID_REFERENCE))
         ;
     }
 }
