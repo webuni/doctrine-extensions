@@ -12,7 +12,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Webuni\DoctrineExtensions\Connection;
+namespace Webuni\DoctrineExtensions\MultiTenant;
 
 use Doctrine\Common\EventManager;
 use Doctrine\DBAL\Configuration;
