@@ -3,7 +3,7 @@
     "description": "Doctrine extensions",
     "type": "library",
     "require": {
-        "php": "^7.2",
+        "php": "^7.2|^8.0",
         "doctrine/orm": "^2.6.3",
         "doctrine/inflector": "^1.0|^2.0"
     },
@@ -38,10 +38,10 @@
         }
     },
     "scripts": {
-        "cs": "vendor/bin/php-cs-fixer fix --ansi --allow-risky=yes",
-        "cs-check": "vendor/bin/php-cs-fixer fix --dry-run --diff --ansi --allow-risky=yes",
-        "analyse": "vendor/bin/phpstan analyse -l 7 -c phpstan.neon --no-progress --ansi src",
-        "tests": "vendor/bin/phpunit --colors=always"
+        "cs": "./run cs",
+        "cs-check": "./run cs --dry-run",
+        "analyse": "./run analyse",
+        "tests": "./run tests"
     },
     "extra": {
         "branch-alias": {

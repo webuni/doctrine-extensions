@@ -56,7 +56,8 @@ final class AutoQuotingSubscriberTest extends TestCase
         $this->assertArrayNotHasKey('quoted', $metadata->table);
 
         $metadata = $this->getMetadataFor(User::class, true);
-        $this->assertArraySubset(['name' => 'User', 'quoted' => true], $metadata->table);
+        $this->assertArrayHasKey('quoted', $metadata->table);
+        $this->assertEquals('User', $metadata->table['name']);
     }
 
     public function testQuotedTable(): void
@@ -65,7 +66,8 @@ final class AutoQuotingSubscriberTest extends TestCase
         $this->assertArrayHasKey('quoted', $metadata->table);
 
         $metadata = $this->getMetadataFor(QuotedUser::class, true);
-        $this->assertArraySubset(['name' => 'user', 'quoted' => true], $metadata->table);
+        $this->assertArrayHasKey('quoted', $metadata->table);
+        $this->assertEquals('user', $metadata->table['name']);
     }
 
     public function testFields(): void
@@ -75,8 +77,10 @@ final class AutoQuotingSubscriberTest extends TestCase
         $this->assertArrayNotHasKey('quoted', $metadata->fieldMappings['where']);
 
         $metadata = $this->getMetadataFor(User::class, true);
-        $this->assertArraySubset(['columnName' => 'select', 'quoted' => true], $metadata->fieldMappings['select']);
-        $this->assertArraySubset(['columnName' => 'where', 'quoted' => true], $metadata->fieldMappings['where']);
+        $this->assertArrayHasKey('quoted', $metadata->fieldMappings['select']);
+        $this->assertArrayHasKey('quoted', $metadata->fieldMappings['where']);
+        $this->assertEquals('select', $metadata->fieldMappings['select']['columnName']);
+        $this->assertEquals('where', $metadata->fieldMappings['where']['columnName']);
     }
 
     public function testAssociations(): void
